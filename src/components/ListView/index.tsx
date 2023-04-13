@@ -1,13 +1,14 @@
 import React from "react";
 
 import "./styles.css";
+import Task from "./Task";
 
 type Props = {
   count: number;
   list: number[];
 };
 
-const NumbersList = ({ count, list }: Props) => {
+const ListView = ({ count, list }: Props) => {
   return (
     <section className='numbers-list'>
       <h3>Lista de números:</h3>
@@ -15,7 +16,7 @@ const NumbersList = ({ count, list }: Props) => {
       {count % 2 !== 0 && (
         <ul>
           {list.map((number) => (
-            <li>{number}</li>
+            <Task listNumber={number} />
           ))}
         </ul>
       )}
@@ -23,4 +24,4 @@ const NumbersList = ({ count, list }: Props) => {
   );
 };
 
-export default NumbersList;
+export default ListView;

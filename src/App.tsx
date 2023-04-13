@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { Button } from "./components";
-import NumbersList from "./components/NumbersList";
+import NumbersList from "./components/ListView";
 
 import "./styles/app.css";
 
