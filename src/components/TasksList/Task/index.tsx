@@ -4,23 +4,23 @@ import * as S from "../styles";
 import Spacer from "../../Spacer";
 
 type Props = {
-  listNumber: number;
+  taskText: string;
 };
 
-const Task = ({ listNumber }: Props) => {
+const Task = ({ taskText }: Props) => {
   const [checked, setChecked] = useState(false);
 
   const handleChangeCheck = () => setChecked((oldValue) => !oldValue);
 
   return (
     <>
-      <li>
+      <S.Task>
         <S.StyledCheckbox
           checked={checked}
           onClick={handleChangeCheck}
         />
-        <p>{listNumber}</p>
-      </li>
+        <S.TaskText checked={checked}>{taskText}</S.TaskText>
+      </S.Task>
 
       <Spacer height={2} />
     </>
