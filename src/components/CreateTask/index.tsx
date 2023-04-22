@@ -14,19 +14,18 @@ const CreateTask = () => {
     <S.Container>
       <h2>To-Do List</h2>
 
-      <section>
-        <label htmlFor=''>Task name</label>
+      <S.CreateTaskContainer>
+        <label htmlFor=''>Task name:</label>
         <input
           type='text'
           placeholder='Ex.: Buy food'
           onChange={(e) => handleChangeTaskName(e.target.value)}
         />
-      </section>
-
-      <Button
-        event={() => handleCreateTask(taskName)}
-        title='Create task'
-      />
+        <Button
+          event={() => handleCreateTask(taskName)}
+          title='Create task'
+        />
+      </S.CreateTaskContainer>
     </S.Container>
   );
 };
