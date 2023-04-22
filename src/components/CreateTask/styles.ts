@@ -8,6 +8,8 @@ export const Container = styled.div`
   align-items: center;
   gap: 1rem;
 
+  width: 35%;
+
   h2 {
     font-size: 2rem;
     font-weight: bold;
@@ -15,9 +17,11 @@ export const Container = styled.div`
 `;
 
 export const CreateTaskContainer = styled.section`
+  width: 100%;
+
   display: flex;
-  gap: 0.5rem;
   align-items: center;
+  justify-content: space-between;
 
   label {
     font-weight: 500;
