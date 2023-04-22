@@ -8,15 +8,17 @@ const TasksList = () => {
   const { tasks } = useTask();
 
   return (
-    <S.NumbersList>
+    <S.TasksListContainer>
       <h3>Tasks:</h3>
 
       <ul>
-        {tasks.map((task) => (
-          <Task taskText={task} />
-        ))}
+        {tasks.length > 0 ? (
+          tasks.map((task) => <Task taskText={task} />)
+        ) : (
+          <S.EmptyTasksMessage>Não há tasks</S.EmptyTasksMessage>
+        )}
       </ul>
-    </S.NumbersList>
+    </S.TasksListContainer>
   );
 };
 
