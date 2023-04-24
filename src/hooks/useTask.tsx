@@ -2,8 +2,10 @@ import React, {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useState,
 } from "react";
+import { useLoading } from "./useLoading";
 
 type Props = {
   children: React.ReactNode;
@@ -18,14 +20,20 @@ type TasksContextProps = {
 const TasksContext = createContext({} as TasksContextProps);
 
 export const TasksProvider = ({ children }: Props) => {
+  const { setLoading } = useLoading();
+
   const [tasks, setTasks] = useState<string[]>([]);
 
   const handleCreateTask = useCallback(
     (task: string) => {
       if (!tasks.includes(task)) {
-        setTasks((oldTasks) => [task, ...oldTasks]);
+        setTasks((oldTasks) => {
+          const updatedTasks = [task, ...oldTasks];
+          localStorage.setItem("tasks", JSON.stringify(updatedTasks)); // Adicionando a task no local storage
+          return updatedTasks;
+        });
       } else {
-        console.error("Task exist on array");
+        console.error("Task exists in array");
       }
     },
     [tasks]
@@ -38,6 +46,16 @@ export const TasksProvider = ({ children }: Props) => {
 
     setTasks(tasksArrayWithoutClickedTask);
   };
+
+  useEffect(() => {
+    setLoading(true);
+
+    const storedTasks = localStorage.getItem("tasks");
+
+    if (storedTasks) {
+      setTasks(JSON.parse(storedTasks));
+    }
+  }, []);
 
   return (
     <TasksContext.Provider
