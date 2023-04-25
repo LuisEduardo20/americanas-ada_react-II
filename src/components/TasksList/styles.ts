@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const TasksListContainer = styled.section`
   width: 35%;
-  margin-top: 2rem;
+  margin-top: 1rem;
 
   border: 1px solid black;
   padding: 1rem;

@@ -13,7 +13,7 @@ const TasksList = () => {
 
       <ul>
         {tasks.length > 0 ? (
-          tasks.map((task) => <Task taskText={task} />)
+          tasks.map((task) => <Task task={task} />)
         ) : (
           <S.EmptyTasksMessage>Não há tasks</S.EmptyTasksMessage>
         )}

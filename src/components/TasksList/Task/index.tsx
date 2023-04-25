@@ -3,33 +3,29 @@ import { FiTrash2 } from "react-icons/fi";
 
 import * as S from "../styles";
 import Spacer from "../../Spacer";
-import useTask from "hooks/useTask";
+import useTask, { Task } from "hooks/useTask";
 
 type Props = {
-  taskText: string;
+  task: Task;
 };
 
-const Task = ({ taskText }: Props) => {
-  const { handleDeleteTask } = useTask();
-
-  const [checked, setChecked] = useState(false);
-
-  const handleChangeCheck = () => setChecked((oldValue) => !oldValue);
+const TaskContainer = ({ task }: Props) => {
+  const { handleDeleteTask, handleCheckTask } = useTask();
 
   return (
     <>
       <S.Task>
         <div>
           <S.StyledCheckbox
-            checked={checked}
-            onClick={handleChangeCheck}
+            checked={task.checked}
+            onClick={() => handleCheckTask(task.id)}
           />
-          <S.TaskText checked={checked}>{taskText}</S.TaskText>
+          <S.TaskText checked={task.checked}>{task.text}</S.TaskText>
         </div>
 
         <button>
           <FiTrash2
-            onClick={() => handleDeleteTask(taskText)}
+            onClick={() => handleDeleteTask(task.id)}
             size={20}
           />
         </button>
@@ -40,4 +36,4 @@ const Task = ({ taskText }: Props) => {
   );
 };
 
-export default Task;
+export default TaskContainer;
